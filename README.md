@@ -1,4 +1,4 @@
-# ***Stats Companion (WORK IN PROGRESS)***
+# **Stats Companion** _(WORK IN PROGRESS)_
 
 My program tries to support all those people who are not familiar with the methods of statistical analysises but they can utilize them during their job or any other parts of their life. 
 
@@ -37,37 +37,39 @@ On the other hand if the variable we would like to predict is binomial or multin
 **When to use "binary" in `y_type`:** in the case of a binomial variable, _for instance when want to estimate whether company will go bankrupt or not_.
 **When to use _"categorical"_ in `y_type`:** when the dependent variable has more than two categories, _such as if we want to predict what grade a student will get on his/her test_.
 
-
 ### Descriptive_stat
-Responsible for making and presenting the descriptive statistics. It outputs written analysis about the measures, in addition also saves all the statistical measures in a csv file so users can insert it into another report if it is needed.
+Responsible for making and presenting the descriptive statistics. It outputs a written analysis about the measures, in addition also saves all the statistical measures in a csv file so users can insert it into another report if it is needed.
 
 ### Prediction
-Prediction function provides the opportunity estimate the value of a variable according to other variables which are in connection with it. With the help of `cleaning()` function it can predict three kinds of variable:
--Continuous variable by using linear regression on all the variables that were given in the input database. The multikollinearity among the independent variables is handled by price component analysis.
--Binary variable by usig logistic regression with all the independent variable the program got. The program tries to handle multikollinearity with the help of PCA in this case as well.
-Both cases the program fit a modell to all independent variables and another with using PCA on the continuous variables, after that automatically chose the better model according to Adjusted R-squared, Akaike- and Schwarz information criterias in linear regression. While in the logistic regression analysis the better modell is chosen by accuracy, Akaike- and Schwarz information criterias.
--Categorical variables are estimated with the help of K Nearest Neighbor method, where the K is the number of neighbors (values) in an independent variable which determinates the value of the dependent variable as well. The program search for the optimal number of neighbors by trying out all cases from 1 to 20 neighbors.
+Prediction function provides the opportunity to estimate the value of the target variable according to the input variables. Thanks to `cleaning()` function it is able to predict three kinds of variable:
 
-**All three cases you can optionally make predictions on new data if it's database is given as a third command-line argument.**
+- Continuous variable by using linear regression on all the variables that were given in the input database. The multicollinearity among the independent variables is handled by price component analysis.
+
+- Binary variable by using logistic regression with all the input variable the program got. The program tries to handle multicollinearity with the help of PCA in this case as well.
+Both cases the program fit a modell to all independent variables and another where the continuous variables are replaced by using PCA on the them, afterwards automatically evaluate both models and choose the better one, according to Adjusted R-squared, Akaike- and Schwarz information criterias in linear regression. While in the logistic regression analysis the better modell is chosen by accuracy, Akaike- and Schwarz information criterias.
+
+- Categorical variables are estimated with the help of K-Nearest Neighbors method, where k is a hyperparameter, chosen by the analyst, the number of neighbours (values) in an independent variable which determinates the value of the dependent variable as well. In this automated process program search for the optimal number of neighbors by trying out all cases from 1 to 20 neighbours.
+
+**All three cases you can optionally make predictions on new data by giving it's database as the third command-line argument.**
 
 ## **Restrictions**
-Even though this program has some flexibility in its usage let me introduce it's boundaries well.
--Despite the fact that many libraries in python offers functions that can work on their own, I constructed my functions to make its use as automatic as possible thus it these functions can be used only in my program and not imported to another file.
--In the `data_reader()` function only works with CSV or Excel files so other common source type for instance a SQL database cannot be used to get data from.
--In linear regression models heteroskedasticity can cause serious problems if the function format is not suitable. Despite the fact that it can be handled partially by using quadratic term or interactions between variables it is not possible in this case since these variables can't be chosen dinamically. !!!!!!!!!!Maybe AI integration could mean a solution for this problem.!!!!!!!!!!!!
+#### Even though this program has some flexibility in its usage let me introduce it's boundaries well.
+- Despite the fact that many libraries in python offers functions that can work on their own, I constructed my functions to make my program's usage as automatic as possible thus these functions can work efficiently only in my program and not imported to another file.
 
+- The `data_reader()` function only works with CSV or Excel files so other common source type for instance a SQL database cannot be used as data source.
 
-### Sources
->Fisher, R. A. (1936). Iris [Data set]. UCI Machine Learning Repository. https://archive.ics.uci.edu/ml/datasets/iris
->Hull John. (2020). Machine Learning in Business: An Introduction to the World of Data Science. https://books.google.hu/books/about/Machine_Learning_in_Business.html?id=5uObzQEACAAJ&redir_esc=y
->Hunyadi László & Vita László. (2008). Statisztika I.
->Shoaib Muhammad. (2025). Student Exam Score Dataset Analysis [Data set]. Kaggle. https://www.kaggle.com/datasets/grandmaster07/student-exam-score-dataset-analysis
->Wooldridge Jeffrey. (2013). Introductory econometrics: A modern approach. Mason, OH: South-Western Cengage Learning. http://archive.org/details/introductoryecon0000wool_c3l8
-
+- In linear regression models heteroskedasticity can cause serious problems if the function format is not suitable. Despite the fact that it can be handled partially by using quadratic term or interactions between variables it is not possible in this case since these variables can't be chosen dinamically(Wooldridge, 2013). Maybe AI integration could mean a solution for this problem to choose the variables.
 
 ###Closing thoughts
-Despite the fact that this program is also able to work now on its own, in the future I would like to make a website for it and present there. In my opinion such a project would be appropiate as a final project of the Cs50 Web Developing course.
+In spite of it's simplicity my program tries to provide a solution for a relevant consumer need since nowadays employees has to work with a large amount of data even though several cases they dont have the knowledge to analyse it the right way. In the future I want to develop my program to be able to make more sophisticated data cleaning and prediction.
 
+### Sources
+- Fisher, R. A. (1936). Iris [Data set]. UCI Machine Learning Repository. https://archive.ics.uci.edu/ml/datasets/iris
 
-In spite of it's simplicity my program tries to provide a solution for a relevant consumer need since nowadays employees has to work with a large amount of data even though they dont have the knowledge to analyse it the right way.
+- Hull John. (2020). Machine Learning in Business: An Introduction to the World of Data Science. https://books.google.hu/books/about/Machine_Learning_in_Business.html?id=5uObzQEACAAJ&redir_esc=y
 
+- Hunyadi László & Vita László. (2008). Statisztika I. https://mersz.hu/hunyadi-vita-statisztika-i
+
+- Shoaib Muhammad. (2025). Student Exam Score Dataset Analysis [Data set]. Kaggle. https://www.kaggle.com/datasets/grandmaster07/student-exam-score-dataset-analysis
+
+- Wooldridge Jeffrey. (2013). Introductory econometrics: A modern approach. Mason, OH: South-Western Cengage Learning. http://archive.org/details/introductoryecon0000wool_c3l8
