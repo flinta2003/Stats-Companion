@@ -3,33 +3,30 @@
 My program tries to support all those people who are not familiar with the methods of statistical analysises but they can utilize them during their job or any other parts of their life. 
 
 ## **Guide**
-This program was built to work automatically, to start you have to pass in the name(s) of the database(s). The train database should be the second command-line argument (after project.py), which helps the program to make predictions on the test database. Test database has to be the third command-line argument. All in all your prompt should look something like this:
+This program was built to work automatically, to start you have to pass in the name(s) of the database(s). The train database should be the second command-line argument (after project.py), which helps the program to learn patterns to make predictions on the test database. Test database has to be the third command-line argument. All in all your prompt should look something like this:
+
 `python project.py train_dataset.csv test_dataset.xlsx`
 
-### ***Given databeses must only consist of the variable we want to make a prediction for and those variables that used make the predictions!***
+### ***Given databeses must only consist of the variable we want to make a prediction for and those variables that used to make the prediction!***
 For example if we want to predict a student's score on a test:
 Train database should contains the score of the test and other independent variables while test database should contain only the independent variables **without the variable you want to predict**.
 
-#https://www.kaggle.com/datasets/grandmaster07/student-exam-score-dataset-analysis
-#https://www.kaggle.com/datasets/uciml/iris
-```
-IDE AZ INDEPENDENT ÉS A DEPENDENT VARIABLE FOGALMÁT BERAKNI EGY TK-BÓL
-```
+Independent Variable: This is the variable used by a model to predict or explain the value of the outcome variable, and in machine learning, these are known as features or attributes.
+Dependent Variable: This is the variable whose value is intended to be predicted, often called the target variable in machine learning, as it represents the outcome resulting from changes in the independent variables.
 
-Although it is not necessary to give a test dataset, it can be really helpful when you have to estimate the price of a house according to your database of houses. **It is important to have the same columns in the test dataset as in the train** otherwise the program going to broke.
+Although it is not necessary to give a test dataset, it can be beneficial when you have to estimate the price of a house according to a house database patterns. **It is important to have the same columns in the test dataset as in the train** otherwise the program won't work.
 
-After that the program will ask automatically whether you would like to |get details | of your dataset. Finally you have the opportunity to choose the statistical method you would like to implement on your data and the program will output the results of the analysis.
+After the script was run the program will ask automatically whether you would like to get details of your dataset. Finally you have to choose the statistical method you would like to implement on your dataset, select the target variable and the program will output the results of the analysis.
 
 ## **Functions**
-###Data_reader
-The `data_reader()` function ensures that the file name(s) which were given in the command-line going to be transformed into pandas dataframes. This function can handle CSV and Excel files with the help of `pd.read_csv` and `pd.read_excel`.
-
+### Data_reader
+The `data_reader()` function ensures that the file name(s) which were given in the command-line arguments going to be transformed into pandas dataframes. This function can handle CSV and Excel files with the help of `pd.read_csv` and `pd.read_excel`.
 
 ### Cleaning
 The cleaning() function has the most functionality all of my functions. 
-`cleaning(tanito, X_Var = 0, y_Var = 0, X_test = 0, y_variable = 0, make_dummies = False, y_type = "continuous")`
+`cleaning(tanito, X_test = 0, y_variable = 0, make_dummies = False, y_type = "continuous", X_Var = 0, y_Var = 0)`
 
-This function can handle a maximum of 4 datasets `tanito` is the full train database, `X` is all the independent variables while `y` contains only that variable we would like to make a prediction for, finally X_test is the predictive dataset.
+This function can handle a maximum of 4 datasets `tanito` is the full train database, `X` contains all the input variables while `y` has only that variable we would like to make a prediction for, finally X_test is the predictive dataset.
 Except `tanito` all of them has a default _0_ as during descriptive statistical analysis the program doesn't use them.
 
 With the help of `make_dummies` argument you can choose if you want to make dummies from categorical columns or not. This feature was necessary since this function is also used in the statistical analysis as well.
@@ -61,11 +58,11 @@ Even though this program has some flexibility in its usage let me introduce it's
 
 
 ### Sources
->Hull, J. (2020). Machine Learning in Business: An Introduction to the World of Data Science. https://books.google.hu/books/about/Machine_Learning_in_Business.html?id=5uObzQEACAAJ&redir_esc=y
->Hunyadi, L., & Vita, L. (2008). Statisztika I.
->Wooldridge, J. M. (with Internet Archive). (2013). Introductory econometrics: A modern approach. Mason, OH: South-Western Cengage Learning. http://archive.org/details/introductoryecon0000wool_c3l8
-
-
+>Fisher, R. A. (1936). Iris [Data set]. UCI Machine Learning Repository. https://archive.ics.uci.edu/ml/datasets/iris
+>Hull John. (2020). Machine Learning in Business: An Introduction to the World of Data Science. https://books.google.hu/books/about/Machine_Learning_in_Business.html?id=5uObzQEACAAJ&redir_esc=y
+>Hunyadi László & Vita László. (2008). Statisztika I.
+>Shoaib Muhammad. (2025). Student Exam Score Dataset Analysis [Data set]. Kaggle. https://www.kaggle.com/datasets/grandmaster07/student-exam-score-dataset-analysis
+>Wooldridge Jeffrey. (2013). Introductory econometrics: A modern approach. Mason, OH: South-Western Cengage Learning. http://archive.org/details/introductoryecon0000wool_c3l8
 
 
 ###Closing thoughts
@@ -73,3 +70,4 @@ Despite the fact that this program is also able to work now on its own, in the f
 
 
 In spite of it's simplicity my program tries to provide a solution for a relevant consumer need since nowadays employees has to work with a large amount of data even though they dont have the knowledge to analyse it the right way.
+
